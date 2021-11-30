@@ -1,0 +1,83 @@
+[
+    {
+        "id":1,
+        "nome":"CAMISETA MESCLA",
+        "preco": 28.00,
+        "parcelas": 3,
+        "cor": ["cinza"],
+        "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_2.png"
+    },
+
+    {
+        "id":2,
+        "nome":"SAIA EM COURO",
+        "preco": 398.00,
+        "parcelas": 5,
+        "cor": ["preto"],
+        "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_3.png"
+    },
+
+    {
+        "id":3,
+        "nome":"CARDIGAN TIGRE",
+        "preco": 398.00,
+        "parcelas": 5,
+        "cor": ["laranja"],
+        "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_4.png"
+    },
+
+    {
+        "id":4,
+        "nome":"CARDIGAN OFF WHITE",
+        "preco": 99.90,
+        "parcelas": 3,
+        "cor": ["branco"],
+        "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_5.png"
+    },
+
+    {
+        "id":5,
+        "nome":"BODY LEOPARDO",
+        "preco": 129.90,
+        "parcelas": 3,
+        "cor": ["amarelo"],
+        "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_6.png"
+    },
+
+    {
+        "id":6,
+        "nome":"CASACO PELOS",
+        "preco": 398.00,
+        "parcelas": 5,
+        "cor": ["rosa"],
+        "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_7.png"
+    },
+
+    {
+        "id":7,
+        "nome":"CROPPED STRIPES",
+        "preco": 120.00,
+        "parcelas": 3,
+        "cor": ["amarelo","rosa","azul"],
+        "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_8.png"
+    },
+
+    {
+        "id":8,
+        "nome":"CAMISA TRANSPARENTE",
+        "preco": 398.00,
+        "parcelas": 5,
+        "cor": ["preto"],
+        "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_9.png"
+    },
+
+    {
+        "id":9,
+        "nome":"POCHETE CLUtCH",
+        "preco": 99.00,
+        "parcelas": 3,
+        "cor": ["preto"],
+        "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_10.png"
+    }
+
+]
