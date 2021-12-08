@@ -52,21 +52,23 @@
         <div id="filtros">
 
             <div id="cores">    
-                <h3>CORES</h3>    
-                <input id="amarelo" type="checkbox">
+                <h3>CORES</h3>
+                <form id = "formCores">    
+                <input id="amarelo" onclick="resetar()" type="checkbox">
                 <label for="amarelo">Amarelo</label>
                 <br>
-                <input id="azul" type="checkbox">
+                <input id="azul" onclick="resetar()"  type="checkbox">
                 <label for="azul">Azul</label>
                 <br>
-                <input id="branco" type="checkbox">
+                <input id="branco"  onclick="resetar()"  type="checkbox">
                 <label for="branco">Branco</label>
                 <br>
-                <input id="cinza" type="checkbox">
+                <input id="cinza" onclick="resetar()"  type="checkbox">
                 <label for="cinza">Cinza</label>
                 <br>
-                <input id="amarelo" type="checkbox">
-                <label for="amarelo">Amarelo</label>
+                <input id="laranja" onclick="resetar()" type="checkbox">
+                <label for="laranja">Laranja</label>
+                </form>
             </div>
         
             <br>
@@ -168,11 +170,12 @@
         <img id="X" onclick="fechar()" src="https://image.freepik.com/icones-gratis/x-simbolo_318-1407.jpg" alt="Fechar carrinho">
         <div>
             <h2 style="text-align: center;">Carrinho de compras</h2>
-        </div>		
+        </div>	
+        
+        <div id="itens"></div>
     </div>
 
     <!-- Footer -->
-    <button onclick="zera()">X</button>
     <footer>Agência M3 - Agência de Perfomance Digital</footer>
 
 

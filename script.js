@@ -1,3 +1,11 @@
+document.addEventListener("keydown",(event) => {
+    let name = event.key;
+    if(name =="Escape")
+    {
+        fechar();
+    }
+})
+
 //Pega JSON e carrega função "carregaPagina"--------------------------------------------------------
 window.onload = function () {
 
@@ -7,45 +15,88 @@ window.onload = function () {
     xhttp.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200)
         {
-            let roupas = JSON.parse(this.responseText);
+            const roupas = JSON.parse(this.responseText);
             carregaPagina(roupas);
-            montaCarrinho(roupas);
+            localStorage.setItem("Json",JSON.stringify(roupas))
         }
     }
     xhttp.open("GET", url)
     xhttp.send();
 }
 
-//Carrega inúmeras divs em "produtos"--------------------------------------------------------------
-function carregaPagina (roupas){
-    
-    let produtos = document.getElementById("produtos");
-    let N = 6;
+//Função que verifica se existem filtros ativos---------------------------------
+function temFiltro ()
+{
+    let R;
+    let filtroCores = ["amarelo","azul", "branco", "cinza", "laranja"]
 
-    for(let i=0; i<N; i++)
+    for(let i=0; i<filtroCores.length; i++)
     {
-        produtos.appendChild(criaDiv(roupas,i));
+        let aux = document.getElementById(filtroCores[i])
+        if(aux.checked == true)
+        {
+            R = true
+        }
     }
 
-    let carregar = document.createElement("button");
-    carregar.id = "carregarMais";
-    carregar.innerHTML = "<b>CARREGAR MAIS</b>";
-    produtos.appendChild(carregar);
-
-    carregar.addEventListener("click", function(){
-        for(let i=0; i<roupas.length-N; i++)
-    {
-        produtos.appendChild(criaDiv(roupas,i+N));
-        carregar.remove();
-    }
-    } );
+    return R;
 }
 
-//Cria div unitária---------------------------------------------
+//Função que recarrega Divs após ativação dos filtros--------------------------------------
+function resetar()
+{
+    console.log("Entrou na função resetar")
+    let produtos = document.getElementById("produtos")
+    produtos.innerHTML = "";
+    carregaPagina();
+}
+
+//Carrega inúmeras divs em "produtos"--------------------------------------------------------------
+function carregaPagina (){
+    
+    let roupas =JSON.parse(localStorage.getItem("Json"));
+    let produtos = document.getElementById("produtos");
+
+    //Define quantas divs serão geradas (Se filtros estiverem ativos, todas as divs são geradas)------------------------------------------
+    let N = 6;
+    if(temFiltro())
+    {
+        N=roupas.length
+    } 
+    
+    //Pega o número e gera as divs-------------------------------------------
+    let i = 0;
+    while( i<N)
+    {
+        produtos.appendChild(criaDiv(roupas,i));
+        i++
+    }
+
+    //Verifica se existem filtros. Se sim, não gera botão, se sim, gera botão--------------------------------------------
+    if(temFiltro())
+    {}
+    else{
+        let carregar = document.createElement("button");
+        carregar.id = "carregarMais";
+        carregar.innerHTML = "<b>CARREGAR MAIS</b>";
+        produtos.appendChild(carregar);
+
+        carregar.addEventListener("click", function()
+        {
+            for(let i=0; i<roupas.length-N; i++)
+            {
+                produtos.appendChild(criaDiv(roupas,i+N));
+                carregar.remove();
+            }
+        });
+    }
+}
+
+//Cria div unitária--------------------------------------------
 function criaDiv (roupas, i)
 {
     let div = document.createElement("div");
-        
+  
         div.classList.add("roupas");
 
         //Imagem---------------------------------
@@ -96,7 +147,85 @@ function criaDiv (roupas, i)
 
         div.appendChild(botao);
 
-        return div;
+        //Mecanismo de filtragem--------------------------------------------
+        //Cores
+        if(temFiltro())
+        {
+            div.style.display = "none"
+
+            //Amarelo
+            for(let j=0; j<roupas[i].cor.length; j++)
+            {
+                let amarelo = document.getElementById("amarelo");
+                
+                if(amarelo.checked == true && roupas[i].cor[j] == "amarelo")
+                {
+                    div.style.display = "block";   
+                }
+                else{
+                    break;
+                }
+            }
+
+            //Azul
+            for(let j=0; j<roupas[i].cor.length; j++)
+            {
+                let azul = document.getElementById("azul");
+                
+                if(azul.checked == true && roupas[i].cor[j] == "azul")
+                {
+                    div.style.display = "block";   
+                }
+                else{
+                    break;
+                }
+            }
+
+            //Branco
+            for(let j=0; j<roupas[i].cor.length; j++)
+            {
+                let branco = document.getElementById("branco");
+                
+                if(branco.checked == true && roupas[i].cor[j] == "branco")
+                {
+                    div.style.display = "block";   
+                }
+                else{
+                    break;
+                }
+            }
+
+            //Cinza
+            for(let j=0; j<roupas[i].cor.length; j++)
+            {
+                let cinza = document.getElementById("cinza");
+                if(cinza.checked == true && roupas[i].cor[j] == "cinza")
+                {
+                    div.style.display = "block";   
+                }
+                else{
+                    break;
+                }
+            }
+
+            //Laranja
+            for(let j=0; j<roupas[i].cor.length; j++)
+            {
+                let laranja = document.getElementById("laranja");
+                
+                if(laranja.checked == true && roupas[i].cor[j] == "laranja")
+                {
+                    div.style.display = "block";   
+                }
+                else{
+                    break;
+                }
+            }
+
+            
+        }
+
+    return div;
 }
 
 
@@ -107,6 +236,7 @@ function criaDiv (roupas, i)
 function abrir()
 {
     document.getElementById('popup').style.display = 'block';
+    montaCarrinho();
 }
 
 function fechar()
@@ -118,65 +248,162 @@ function fechar()
 
 function adicionar(id)
 {
+    let storage;
     botao=document.getElementById("botao"+id)
 
-    if(localStorage.getItem("roupas")==null)
+    if(localStorage.getItem("roupas")===null)
     {
-        localStorage.setItem('roupas',id);
+        storage = [];
     } 
     else{
-        let storage = []
-        storage[0] = localStorage.getItem("roupas");
-        storage.push(id);
-        localStorage.setItem("roupas", storage);
+        storage = JSON.parse(localStorage.getItem("roupas"));
     }
+    storage.push(id);
+    localStorage.setItem("roupas",JSON.stringify(storage))
 
     botao.onclick = "";
     botao.innerHTML = "<b>COMPRADO</b>";
     botao.style.backgroundColor = "rgb(13, 90, 116)";
 }
 
-function montaCarrinho(roupas)
+function montaCarrinho()
 {
-    let popup = document.getElementById("popup");
+    let popup = document.getElementById("itens");
     let storage=JSON.parse(localStorage.getItem("roupas")) ;
+    let roupas = JSON.parse(localStorage.getItem("Json"))
 
-    for(let i=0; i<storage.length; i++)
+    if(localStorage.getItem("roupas")===null)
     {
-        let div = document.createElement("div");
-        div.classList.add("carrinho");
-     
-        //Imagem
-        let foto = document.createElement("img");
-        foto.classList.add("foto");
-        foto.src = roupas[storage[i]].imagem;
-        div.appendChild(foto);
-
-        //Título
-        let titulo = document.createElement("p");
-        titulo.innerHTML = "<b>"+roupas[i].nome+"</b>";
-        div.appendChild(titulo);
-
-        //Preço unitário
-        let precoUni = document.createElement("p");
-        let textoPrecoUni = document.createTextNode("Preço unitário: R$"+roupas[i].preco+",00");
-        precoUni.appendChild(textoPrecoUni);
-        div.appendChild(precoUni);
-
-        //Botão quantidade
-        let quantidade = document.createElement("button");
-
-        popup.appendChild(div);   
+        let carrinhoVazio = document.createElement("img");
+        carrinhoVazio.src = "https://www.tingimentovirtual.com.br/public/img/carrinho-vazio.jpg";
+        carrinhoVazio.id = "carrinhoVazio";
+        popup.appendChild(carrinhoVazio);
     }
+    
+    else
+    {
+        popup.innerHTML ="";
+
+        let compra = 0;
+
+        let i=0;
+        while( i<storage.length)
+        {
+            let div = document.createElement("div");
+            div.classList.add("carrinho");
+        
+            //Imagem
+            let foto = document.createElement("img");
+            foto.classList.add("foto");
+            foto.src = roupas[storage[i]].imagem;
+            div.appendChild(foto);
+
+            //Título
+            let titulo = document.createElement("p");
+            titulo.innerHTML = "<b>"+roupas[storage[i]].nome+"</b>";
+            titulo.style.width = "25%";
+            div.appendChild(titulo);
+
+            //Preço unitário
+            let precoUni = document.createElement("p");
+            let textoPrecoUni = document.createTextNode("Preço unitário: R$"+roupas[storage[i]].preco.toFixed(2));
+            precoUni.style.width = "200px"
+            precoUni.appendChild(textoPrecoUni);
+            div.appendChild(precoUni);
+
+            //Botão quantidade mais
+            let valor = 1;
+
+            let quantidadeMais = document.createElement("button");
+            quantidadeMais.innerHTML = "+";
+            quantidadeMais.style.height = "35px";
+            quantidadeMais.style.marginTop = "20px"
+            quantidadeMais.style.marginLeft = "30px"
+            quantidadeMais.style.fontSize = "25px"
+            quantidadeMais.onclick = function()
+            {
+                valor = valor+1
+                quantidade.innerHTML = valor;
+                precoTotal.innerHTML = "R$ "+(roupas[storage[i]].preco*(valor)).toFixed(2);
+            }
+            div.appendChild(quantidadeMais);
+
+            //Quantidade
+            let quantidade = document.createElement("output");
+            quantidade.innerHTML = valor;
+            quantidade.style.marginTop = "25px"
+            quantidade.style.marginLeft = "10px"
+            quantidade.style.marginRight = "10px"
+            div.appendChild(quantidade);
+
+            //Quantidade   menos
+            let quantidadeMenos = document.createElement("button");
+            quantidadeMenos.innerHTML = "-";
+            quantidadeMenos.style.height = "35px";
+            quantidadeMenos.style.marginTop = "20px"
+            quantidadeMenos.style.marginRight = "30px"
+            quantidadeMenos.style.fontSize = "25px"
+            quantidadeMenos.onclick = function()
+            {
+                if(valor != 0)
+                {
+                    valor = valor -1;
+                    quantidade.innerHTML = valor;
+                    precoTotal.innerHTML = "R$ "+(roupas[storage[i]].preco*(valor)).toFixed(2);
+                }
+            }
+            div.appendChild(quantidadeMenos);
+
+
+            //Preço total
+            let precoTotal = document.createElement("output");
+            precoTotal.innerHTML = "R$ "+(roupas[storage[i]].preco*valor).toFixed(2);
+            precoTotal.classList.add("precoTotal")
+            div.appendChild(precoTotal);
+
+            popup.appendChild(div);
+
+            compra = compra + parseFloat((roupas[storage[i]].preco*valor));
+
+            i++;
+        }
+
+        let divBaixa = document.createElement("div");
+        divBaixa.classList.add("divBaixa");
+
+        //Valor da compra
+        let valorCompra = document.createElement("output");
+        valorCompra.innerHTML = "<b>Valor da compra:<br>R$"+compra.toFixed(2)+"</b>";
+        valorCompra.classList.add("valorCompra")
+        divBaixa.appendChild(valorCompra);
+
+
+        //Botão esvaziar ---------------------------------------------------
+        let esvaziar = document.createElement("button");
+        esvaziar.id = "esvaziar";
+        esvaziar.innerHTML = "<b>ESVAZIAR CARRINHO</b>"
+        esvaziar.onclick = 
+        function()
+        {
+            localStorage.removeItem("roupas");
+            
+            popup.innerHTML = "<img id="+"carrinhoVazio"+" src="+"https://www.tingimentovirtual.com.br/public/img/carrinho-vazio.jpg"+">";
+
+            for(let j=0; j<roupas.length; j++){ 
+                botao = document.getElementById("botao"+j)
+                botao.innerHTML = "<b>COMPRAR</b>"
+                botao.id = "botao"+j;
+                botao.style.backgroundColor = "black"
+                botao.onclick = function(){adicionar(j)}
+            }
+        }
+        let hr = document.createElement("hr");
+       
+        popup.appendChild(divBaixa);
+        popup.appendChild(hr);
+        popup.appendChild(esvaziar);    
+    }
+
+    
 }
 
-//Zera Web Storage------------------
-function zera()
-{
-    localStorage.removeItem("roupas");
-
-    for(let i=0; i<9; i++){ document.getElementById("botao"+i)
-    botao.innerHTML = "<b>COMPRAR</b>"
-    botao.id = "botao"+i;
-    botao.onclick = function(){adicionar(i)}}
-}

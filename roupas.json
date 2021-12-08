@@ -4,6 +4,7 @@
         "nome":"CAMISETA MESCLA",
         "preco": 28.00,
         "parcelas": 3,
+        "tamanho": "M",
         "cor": ["cinza"],
         "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_2.png"
     },
@@ -13,6 +14,7 @@
         "nome":"SAIA EM COURO",
         "preco": 398.00,
         "parcelas": 5,
+        "tamanho": "36",
         "cor": ["preto"],
         "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_3.png"
     },
@@ -22,6 +24,7 @@
         "nome":"CARDIGAN TIGRE",
         "preco": 398.00,
         "parcelas": 5,
+        "tamanho": "G",
         "cor": ["laranja"],
         "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_4.png"
     },
@@ -31,6 +34,7 @@
         "nome":"CARDIGAN OFF WHITE",
         "preco": 99.90,
         "parcelas": 3,
+        "tamanho": "G",
         "cor": ["branco"],
         "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_5.png"
     },
@@ -40,6 +44,7 @@
         "nome":"BODY LEOPARDO",
         "preco": 129.90,
         "parcelas": 3,
+        "tamanho": "P",
         "cor": ["amarelo"],
         "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_6.png"
     },
@@ -49,6 +54,7 @@
         "nome":"CASACO PELOS",
         "preco": 398.00,
         "parcelas": 5,
+        "tamanho": "GG",
         "cor": ["rosa"],
         "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_7.png"
     },
@@ -58,7 +64,8 @@
         "nome":"CROPPED STRIPES",
         "preco": 120.00,
         "parcelas": 3,
-        "cor": ["amarelo","rosa","azul"],
+        "tamanho": "M",
+        "cor": ["amarelo","azul","rosa"],
         "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_8.png"
     },
 
@@ -67,15 +74,17 @@
         "nome":"CAMISA TRANSPARENTE",
         "preco": 398.00,
         "parcelas": 5,
+        "tamanho": "M",
         "cor": ["preto"],
         "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_9.png"
     },
 
     {
         "id":9,
-        "nome":"POCHETE CLUTCH",
+        "nome":"POCHETE CLUtCH",
         "preco": 99.00,
         "parcelas": 3,
+        "tamanho": "40",
         "cor": ["preto"],
         "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_10.png"
     }
