@@ -65,7 +65,7 @@
         "preco": 120.00,
         "parcelas": 3,
         "tamanho": "M",
-        "cor": ["amarelo","azul","rosa"],
+        "cor": ["amarelo","rosa","azul"],
         "imagem": "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/layout/imagens/img_8.png"
     },
 
