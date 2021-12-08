@@ -1,0 +1,355 @@
+@media screen and (max-width: 600px) {
+    #filtros{
+        visibility: collapse;
+    }
+
+    #produtos{
+        margin: 0px;
+        padding: 0px;
+        border: solid;
+    }
+
+    .roupas{
+        padding: 0;
+        height: 500px;
+    }
+
+}
+
+/*----------------------------------------------------*/
+
+body{
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+ /*DIV 1-Com logo e botão carrinho de compras*/
+#logo{
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    margin-right: 8%;
+    margin-left: 8%;
+
+    will-change: transform;
+    transition: transform 450ms;
+}
+
+#logo:hover{
+    transition: transform 250ms;
+    transform: translateY(-15%)
+}
+
+#carrinho{
+    float: right;
+
+    width: 30px;
+
+    margin-right: 15%;
+    margin-top: 5px;
+
+    will-change: transform;
+    transition: transform 450ms;
+}
+
+#carrinho:hover{
+    transition: transform 250ms;
+    transform: translateY(-15%)
+}
+
+
+/*DIV 2- Com título blusas e select ordenar por*/
+#titulo{
+    float: left ;
+    margin-left: 8%;
+}
+
+#ordenar{
+    font-family: 'Montserrat', sans-serif;
+
+    float: right;
+
+    margin-top: 15px;
+    margin-right: 15%;
+    padding-left: 10px;
+
+    width: 170px;
+    height:55px;
+
+    font-size: 16px;
+}
+    
+
+
+
+/* DIV 3- Global-----------------*/
+
+main{
+    display: flex;
+
+    width: 100%;
+}
+
+/*DIV 4- Filtros e botões checkbox--------------------------------*/
+
+#filtros{
+    width: 22%;
+
+    margin-left: 8%;
+    margin-right: 2.5%;
+}
+
+/*-------------------------------*/
+#tamanhos label {
+	cursor: pointer;
+}
+
+#tamanhos label [type="checkbox"] {
+	display: none;    
+}
+
+[type="checkbox"]+span {
+	display: inline-block;
+	text-align: center;
+	margin: .1em;
+	padding-top: .4em;
+	width: 2rem;
+	height: 1.6rem;
+	border: 1px solid rgb(171, 184, 189);
+}
+
+:checked+span {
+    color: rgb(38, 155, 194);
+	border: 1px solid rgb(38, 155, 194);
+}
+
+:hover+span {
+    color: rgb(38, 155, 194) ;
+	border: 1px solid rgb(38, 155, 194);
+	transition: 100ms;
+}
+
+[type="checkbox"][disabled]+span {
+	background: #f00;
+}
+
+#tamanhos{
+	width: 50%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/*DIV 5- Engloba as divs de roupas--------------------------------*/ 
+
+#produtos{
+    width: 57%;
+
+    margin-right: 8%;
+    margin-left: 2.5%;
+    margin-bottom: 5%;
+
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+
+    justify-content: center;
+}
+
+.roupas{
+    font-family: 'Montserrat', sans-serif;
+
+    margin: 2.5%;
+
+    text-align: center;
+
+    justify-content: center;
+}
+
+/*Subdivisões das divs de roupas----------------------------------------*/
+
+.botaoComprar{
+    width: 195px;
+    height: 55px;
+
+    color: white;
+    background-color: black;
+
+    border: none;
+
+    font-size: 16px;
+
+    will-change: transform;
+    transition: transform 450ms;
+}
+
+.botaoComprar:hover{
+    transition: transform 250ms;
+    transform: translateY(-15%)    
+}
+
+.preco{
+    font-size: 19px;
+}
+
+/*Carregar mais------------------------*/
+
+
+
+#carregarMais {
+    margin-top: 5%;
+
+    background-color: rgb(37, 176, 180);
+    color: white;
+
+    border: none;
+
+    height: 40px;
+    width: 150px;
+
+    will-change: transform;
+    transition: transform 450ms;
+}
+
+#carregarMais:hover{
+    transition: transform 250ms;
+    transform: translateY(-15%)
+}
+
+/*Footer---------------------*/
+
+footer{
+    background-color: black;
+    color: white;
+
+    text-align: center;
+
+    padding: 0px;
+    margin: 0px;
+
+    height: 25px;
+
+    font-size: 15px;
+}
+
+
+/*pop-up ---------------------*/
+#popup{
+    position: fixed;
+
+    top: 0; bottom: 0; 
+    left: 0; right:0;
+
+    margin: auto;
+
+    width: 900px;
+    height: 500px;
+    
+    border-style: groove;
+    border-color: rgb(151, 150, 150);
+    border-radius: 10px;
+    border: solid;
+    
+    background-color: rgba(255, 255, 255, 0.9);
+    
+
+    display: none;
+
+    overflow: auto;
+}
+
+#X{
+    float: right;
+    width: 20px;
+
+    margin: 10px;
+
+    will-change: transform;
+    transition: transform 450ms;
+}
+
+#X:hover{
+    transition: transform 450ms;
+    transform: rotate(180deg);
+}
+
+/*-------------------------------------------------------*/
+.carrinho{
+    height:70px;
+
+    display: flex;
+
+    border-style: solid;
+    border-radius: 15px;
+
+    margin: 10px;
+
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.carrinho img{
+    margin-left: 8px;
+    margin-right: 10px;
+}
+
+.carrinho p{
+    margin-top: 25px;
+    margin-left: 10px;
+}
+
+/*--------------------------------------------*/
+.precoTotal{
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+    padding: 10px;
+
+    border: solid;
+    border-radius: 15px;
+}
+
+#esvaziar{
+    margin-top: 2.5%;
+
+    margin-left: 41.5%;
+
+    background-color: rgb(37, 176, 180);
+    color: white;
+
+    border: none;
+    border-radius: 15px;
+
+    height: 40px;
+    width: 150px;
+
+    will-change: transform;
+    transition: transform 450ms;
+}
+
+#esvaziar:hover{
+    transition: transform 250ms;
+    transform: translateY(-15%)
+}
+
+/*----------------------------------------------------*/
+
+#carrinhoVazio{
+    width: 700px;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+/*----------------------------------------------------------*/
+
+.divBaixa{
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.valorCompra{
+    font-size: 25px;    
+}
