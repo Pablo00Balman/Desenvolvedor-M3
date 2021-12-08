@@ -9,15 +9,15 @@ document.addEventListener("keydown",(event) => {
 //Pega JSON e carrega função "carregaPagina"--------------------------------------------------------
 window.onload = function () {
 
-    let url = "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/roupas.json";
+    let url = "https://raw.githubusercontent.com/Pablo00Balman/Desenvolvedor-M3/master/roupas.json" ;
 
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200)
         {
             const roupas = JSON.parse(this.responseText);
-            carregaPagina(roupas);
             localStorage.setItem("Json",JSON.stringify(roupas))
+            carregaPagina();
         }
     }
     xhttp.open("GET", url)
@@ -442,4 +442,3 @@ function montaCarrinho()
 
     
 }
-
